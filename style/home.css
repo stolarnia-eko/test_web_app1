@@ -1,0 +1,353 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+body{
+    background: #c2e2ed;
+    overflow: hidden;
+    height: 100vh;
+}
+.wrapper{
+    width: calc(100vw - 10px);
+    margin: 0 auto;
+    background-color: antiquewhite;
+    position: relative;
+}
+/* start header */
+.wrapper header{
+    font-size: 22px;
+    font-family: "Poppins", sans-serif;
+    
+}
+.box1 {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 10px;
+    position: relative;
+    margin-bottom: 20px;
+    background-color: rgb(187, 157, 216);
+    
+}
+.open-dialog-signout {
+    display: none;
+    /* Скрыто по умолчанию */
+    position: absolute;
+    right: 10px;
+    top: 40px;
+    background-color: #f9f9ff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    padding: 10px;
+    border-radius: 4px;
+} 
+.show {
+    display: block;
+    width: 200px;
+    padding: 20px;
+    background-color: red;
+    color: white;
+    font-size:28px;
+    font-weight: bold;
+}
+/* finish header */
+/* start select categores */
+.categores {
+    padding: 7px;
+}
+
+.categores h3 {
+    margin-bottom: 18px;
+    padding: 7px;
+    font-size: 28px;
+}
+
+select {
+    font-size: 32px;
+    padding: 5px 10px;
+    border-radius: 12px;
+    border: 2px solid #555;
+    background-color: #f0f0f0;
+    box-shadow: 3px 8px 3px rgba(37, 118, 210, 0.3);
+    width: 100%;
+    appearance: none;
+}
+/* finish select categores */
+
+/* start block list recipe */
+.list-recipe {
+    padding: 25px 10px;
+    overflow-y: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 500px;
+       
+}
+
+
+.list-recipe::-webkit-scrollbar {
+    display: none;
+    /* Скрывает сам элемент скроллбара */
+}
+
+.name-recipe {
+    font-size: 28px;
+}
+
+.support-recipe {
+    font-size: 22px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.list_item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border:3px rgb(78, 48, 227) solid;
+    border-radius: 15px;
+}
+
+.list_item:hover {
+    background-color: #999494;
+    color: white;
+}
+
+.img_delete {
+    width: 52px;
+    height: 52px;
+}
+
+.img_delete:hover {
+    width: 46px;
+    height: 46px;
+    transition-duration: 0.5s;
+}
+/* finish block list recipe */
+
+/* start block add recipe */
+.add-recipe{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #48ff00;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.add-recipe h3{
+    font-size: 22px;
+    
+}
+/* CSS */
+.button-85 {
+  padding: 0.4em 1.5em;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  font-size: 24px;
+}
+
+.button-85:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 500%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 6px);
+  height: calc(100% + 5px);
+  animation: glowing-button-85 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-button-85 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.button-85:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #706d6d;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+.button-85:active{
+    font-size:16px ;
+}
+/* .no-show{
+    display: none;
+} */
+/* finish add recipe */
+
+
+
+
+
+
+/* start box dialog */
+
+.dialog{
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    width: 100%;
+    height: 110%;
+    top:0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+.dialog-box{
+    width: 90%;
+    height: 200px;
+    background-color: #fff;
+    border-radius: 16px;
+}
+.content-dialog{
+    position: relative;
+    
+}
+.content-dialog h3{
+    font-size: 24px;
+    position: absolute;
+    top:20px;
+    left: 20px;
+}
+.two-btn{
+    position: absolute;
+    top:140px;
+    right: 0;
+}
+.btn1 {
+  /* Variables */
+  --button_radius: 0.75em;
+  --button_color: #e8e8e8;
+  --button_outline_color: #000000;
+  font-size: 17px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--button_radius);
+  background: var(--button_outline_color);
+  margin-right: 10px;
+}
+
+.button_top {
+  display: block;
+  box-sizing: border-box;
+  border: 2px solid var(--button_outline_color);
+  border-radius: var(--button_radius);
+  padding: 0.55em 1.2em;
+  background: var(--button_color);
+  color: var(--button_outline_color);
+  transform: translateY(-0.2em);
+  transition: transform 0.1s ease;
+}
+
+button:hover .button_top {
+  /* Pull the button upwards when hovered */
+  transform: translateY(-0.33em);
+}
+
+button:active .button_top {
+  /* Push the button downwards when pressed */
+  transform: translateY(0);
+}
+#recipe{
+    background-color: red;
+    font-size: 30px;
+    color: white;
+    padding: 0px 20px 5px 2px;
+    
+}
+/* dialog my recipe */
+.dialog-recipe{
+    background-color: rgb(231, 226, 226);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 50;
+    display: none;
+    justify-content: center;
+    padding-top: 28px;
+    overflow: hidden;
+
+
+}
+.dialog-box-recipe{
+    width: 95%;
+    height: 85%;
+    display: block;
+    position: relative;
+
+}
+/* textarea in my recipe */
+.text-recipe{
+    display:none;
+    width: 100%;
+    height: 80%;
+    font-size: 24px;
+    padding: 20px;
+    font-family: "Poppins", sans-serif;
+    overflow-y: auto;
+}
+.block-text-recipe{
+    display:block;
+    width: 100%;
+    height: 80%;
+    font-size: 24px;
+    padding: 20px;
+    font-family: "Poppins", sans-serif;
+    overflow-y: auto;
+    border: 2px black solid;
+}
+
+.two-button{
+    position:absolute;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
