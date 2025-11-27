@@ -1,0 +1,26 @@
+{
+    "name": "Test App",
+    "short_name": "My Clear",
+    "start_url": "/",
+    "display_override": ["window-control-overlay", "minimal-ui"],
+    "display": "standalone",
+    "theme_color": "#FFFFFF",
+    "background_color": "#3367D6",
+    "icons": [
+        {
+            "src": "/assets/icons/android-launchericon-512-512.png",
+            "sizes": "512x512",
+            "type":"image/png"   
+        }
+    ],
+    "screenshots": [
+    {
+      "src": "/assets/image/screenshot.png",
+      "type": "image/png",
+      "sizes": "918x2048",
+      "form_factor": "wide"
+    }
+    
+  ]
+
+}

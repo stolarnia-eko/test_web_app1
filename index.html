@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login & Signup Form</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="icon" href="/assets/icons/" type="image/x-icon">
+</head>
+
+<body>
+    <section class="wrapper">
+        <div class="form signup" id="form-signup">
+            <header>Signup</header>
+            <form action="#" id="form_signup" method="post">
+                <input type="text" id="name" placeholder="Full name" required />
+                <input type="email" id="email" placeholder="Email address" required />
+                <input type="password" id="password" placeholder="Password" required />
+                <div class="checkbox">
+                    <input type="checkbox" name="" id="check">
+                    <p>Показати password</p>
+                </div>
+                <input type="submit" value="Signup" id="btn-signup" />
+            </form>
+        </div>
+        <div class="form login">
+            <header>Login</header>
+            <form action="#" id="form_signin" method="post">
+                <input type="text" id="email_logo" placeholder="Email address" required />
+                <input type="password" id="password_logo" placeholder="Password" required />
+                <a href="#">Forgot password?</a>
+                <input type="submit" value="Login" id="btn-sign"/>
+            </form>
+        </div>
+    </section>
+    <div class="dialog" id="dialog">
+        <div class="dialog-box">
+            <span id="close-dialog" class="close-btn">&times;</span>
+            <div class="content-dialog">
+                <h2 style="text-align: center;">Uwaga:</h2>
+                <p id="text-dialog"></p>
+            </div>
+        </div>
+    </div>
+    <!-- <img src="https://icons.iconarchive.com/icons/ampeross/qetto/128/icon-developer-icon.png" width="128" height="128"> -->
+</body>
+<script type="module" src="scripts/firebaseauth.js"></script>
+<script>
+    const wrapper = document.querySelector(".wrapper");
+    const loginHeader = document.querySelector(".login header");
+    const signupHeader = document.querySelector('.signup header');
+    loginHeader.addEventListener("click", () => {
+        wrapper.classList.add("active");
+    });
+    signupHeader.addEventListener("click", () => {
+        wrapper.classList.remove("active")
+    });
+</script>
+
+</html>
