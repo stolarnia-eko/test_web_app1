@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="../style/home.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"> -->
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="top-header">
+            <div class="box1">
+                <h2 class="title">Ksiazka przepisow</h2>
+                <img id="dot-vertical" src="../assets/icons/icons8-menu-vertical-50.png" alt="">
+                <div id="signout" class="open-dialog-signout">Sing Out</div>
+            </div>
+
+        </header>
+        <div class="categores">
+            <h3>Moje przepisy:</h3>
+            <select id="select" name="fruit">
+                <option value="Wszystkie przepisy">Wszystkie przepisy</option>
+                <option value="Pierwsze dania">Pierwsze dania</option>
+                <option value="Drugie dania">Drugie dania</option>
+                <option value="Ryby">Ryby</option>
+                <option value="Przystawki">Przystawki</option>
+                <option value="Salatki">Salatki</option>
+                <option value="Ciasta">Ciasta</option>
+                <option value="Desery">Desery</option>
+                <option value="Drozrzdiowe">Drozrzdiowe</option>
+                <option value="Inne">Inne</option>
+            </select>
+        </div>
+        <div class="list-recipe" id="list-recipe">
+        </div>
+        <div class="add-recipe">
+            <h3>Dodawanie przepisu</h3>
+            <button id="add-recipe" class="button-85">Dodaj</button>
+        </div>
+        
+        <div class="dialog" id="dialog">
+            <div class="dialog-box">
+                <div class="content-dialog">
+                    <h3 class="title-dialog">Chcesz wykasowac przepis <span id="recipe"></span></h3>
+                    <div class="two-btn">
+                        <button class="btn1" id="btn-close">
+                            <span class="button_top"> Powroc </span>
+                        </button>
+                        <button class="btn1" id="btn-yes">
+                            <span class="button_top"> Akceptuje </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dialog-recipe" id="dialog-recipe">
+            <div class="dialog-box-recipe">
+                <textarea name="" class="text-recipe" id="text-recipe"></textarea>
+                <p class="block-text-recipe" id="block-text-recipe"></p>
+                <div class="two-button">
+                    <button id="edit-recipe" class="button-85">
+                        Edytuj
+                    </button>
+                    <button id="close-dialog-recipe" class="button-85">
+                        Zamknij
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+</body>
+<script type="module" src="../scripts/home.js"></script>
+
+</html>
