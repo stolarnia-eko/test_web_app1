@@ -1,6 +1,6 @@
 {
     "name": "Web App",
-    "short_name": "My Clear",
+    "short_name": "Web App",
     "start_url": "/test_web_app1/",
     "display_override": ["window-control-overlay", "minimal-ui"],
     "display": "standalone",
@@ -25,5 +25,6 @@
 
 
 }
+
 
 
