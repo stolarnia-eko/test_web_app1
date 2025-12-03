@@ -10,24 +10,28 @@ body{
     height: 100vh;
 }
 .wrapper{
-    width: calc(100vw - 10px);
+    width: 100vw;
     margin: 0 auto;
     background-color: antiquewhite;
     position: relative;
 }
 /* start header */
 .wrapper header{
-    font-size: 22px;
+    font-size: 18px;
     font-family: "Poppins", sans-serif;
     
 }
 .box1 {
     display: flex;
     justify-content: space-between;
-    padding: 20px 10px;
+    padding: 18px 10px;
     position: relative;
     margin-bottom: 20px;
-    background-color: rgb(187, 157, 216);
+    background-color: rgb(112, 243, 79);
+    
+}
+#dot-vertical{
+    width: 30px;
     
 }
 .open-dialog-signout {
@@ -57,7 +61,7 @@ body{
 .user{
     display: flex;
     gap: 10px;
-    font-size: 22px;
+    font-size: 14px;
     justify-content: right;
     padding-right: 20px;
 }
@@ -108,11 +112,11 @@ select {
 }
 
 .name-recipe {
-    font-size: 28px;
+    font-size: 20px;
 }
 
 .support-recipe {
-    font-size: 22px;
+    font-size: 16px;
     color: rgba(0, 0, 0, 0.7);
 }
 
@@ -137,23 +141,44 @@ select {
 }
 
 .img_delete {
-    width: 52px;
-    height: 62px;
+    width: 32px;
+    height: 32px;
     margin-left: 20px;
     
 }
 .img_edit{
-    width: 52px;
-    height: 52px;
-}
-
-.img_delete:hover, .img_edit:hover {
-    border: 2px red solid;
-    border-radius: 26px;
-    background-color: red;
-    padding: 5px;
+    width: 30px;
+    height: 30px;
 }
 /* finish block list recipe */
+/* dialog delete start */
+.title-dialog-delete{
+    font-size: 22px;
+    color: #111;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.two-btn-delete{
+    margin-top: 40px;
+    display: flex;
+    justify-content: right;
+    gap: 15px;
+}
+.button-86{
+    padding: 0.4em 1.5em;
+    border: none;
+    outline: none;
+    color: rgb(255, 255, 255);
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    font-size: 16px;
+}
 /* dialod-edit-support start */
 .dialod-edit-support{
     background-color: rgba(108, 126, 146, 1);
@@ -164,6 +189,7 @@ select {
     display: none;
     justify-content: center;
     align-items: center;
+    padding: 5px;
 }
 .block-edit{
     width: 380px;
@@ -173,8 +199,8 @@ select {
     text-align: center;
 }
 .title-support{
-    font-size: 2em;
-    margin-bottom: 20px;
+    font-size: 1.5em;
+    margin-bottom: 14px;
 }
 input{
     font-size: 28px;
@@ -192,7 +218,7 @@ input{
     align-items: center;
     position: fixed;
     bottom: 0;
-    width: 98%;
+    width: 100%;
 }
 .add-recipe h3{
     font-size: 22px;
@@ -215,7 +241,7 @@ input{
   font-size: 24px;
 }
 
-.button-85:before {
+.button-85:before, .button-86:before {
   content: "";
   background: linear-gradient(
     45deg,
@@ -255,7 +281,7 @@ input{
   }
 }
 
-.button-85:after {
+.button-85:after, .button-86:after {
   z-index: -1;
   content: "";
   position: absolute;
