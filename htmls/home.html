@@ -17,8 +17,11 @@
                 <img id="dot-vertical" src="../assets/icons/icons8-menu-vertical-50.png" alt="">
                 <div id="signout" class="open-dialog-signout">Sing Out</div>
             </div>
-
         </header>
+        <div class="user">
+            <p>Witaj,</p>
+            <p id="user"></p>
+        </div>
         <div class="categores">
             <h3>Moje przepisy:</h3>
             <select id="select" name="fruit">
@@ -34,23 +37,27 @@
                 <option value="Inne">Inne</option>
             </select>
         </div>
+        <div class="info-user">
+            <p id="info"></p>
+        </div>
         <div class="list-recipe" id="list-recipe">
         </div>
         <div class="add-recipe">
             <h3>Dodawanie przepisu</h3>
-            <button id="add-recipe" class="button-85">Dodaj</button>
+            <button id="click_add-recipe" class="button-85">Dodaj</button>
         </div>
-        
+
         <div class="dialog" id="dialog">
             <div class="dialog-box">
                 <div class="content-dialog">
-                    <h3 class="title-dialog">Chcesz wykasowac przepis <span id="recipe"></span></h3>
+                    <h2 class="title-dialog">Napewno wykasowac przepis???</h2>
+                    <h2 id="recipe"></h2>
                     <div class="two-btn">
-                        <button class="btn1" id="btn-close">
-                            <span class="button_top"> Powroc </span>
+                        <button class="button-85" id="btn-close">
+                            Powrot
                         </button>
-                        <button class="btn1" id="btn-yes">
-                            <span class="button_top"> Akceptuje </span>
+                        <button class="button-85" id="btn-yes">
+                            Akceptuje
                         </button>
                     </div>
                 </div>
@@ -58,8 +65,12 @@
         </div>
         <div class="dialog-recipe" id="dialog-recipe">
             <div class="dialog-box-recipe">
+                <p class="title-recip" id="name-recipe"></p>
                 <textarea name="" class="text-recipe" id="text-recipe"></textarea>
                 <p class="block-text-recipe" id="block-text-recipe"></p>
+                <div class="messenger">
+                    <p id="text-messenger"></p>
+                </div>
                 <div class="two-button">
                     <button id="edit-recipe" class="button-85">
                         Edytuj
@@ -70,11 +81,18 @@
                 </div>
             </div>
         </div>
+        <div class="dialod-edit-support" id="dialod-edit-support">
+            <div class="block-edit">
+                <h2 class="title-support">Zapisz nowy support text</h2>
+                <input type="text" id="text-support">
+                <button class="button-85" id="btn-edit-support">Zapisz</button>
+            </div>
+        </div>
     </div>
     </div>
 
 
 </body>
-<script type="module" src="../scripts/home.js"></script>
+<script type="module" src="../scripts/test.js"></script>
 
 </html>
