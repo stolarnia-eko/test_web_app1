@@ -4,7 +4,7 @@
     "start_url": "/test_web_app1/",
     "display_override": ["window-control-overlay", "minimal-ui"],
     "display": "standalone",
-    "theme_color": "#FFFFFF",
+    "theme_color": "#948b6e",
     "background_color": "#3367D6",
     "icons": [
         {
@@ -25,3 +25,4 @@
 
 
 }
+
