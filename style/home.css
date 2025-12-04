@@ -14,6 +14,9 @@ body{
     margin: 0 auto;
     background-color: antiquewhite;
     position: relative;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 }
 /* start header */
 .wrapper header{
@@ -97,12 +100,12 @@ select {
 }
 /* start block list recipe */
 .list-recipe {
-    padding: 25px 10px;
+    padding-left: 5px;
+    padding-right: 5px;
     overflow-y: auto;
     margin-top: 20px;
-    margin-bottom: 20px;
-    height: 500px;
-       
+    height: auto;
+   
 }
 
 
