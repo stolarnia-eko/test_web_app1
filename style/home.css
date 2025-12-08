@@ -148,12 +148,10 @@ select {
 /* 3 block bottom */
 .bottom-content{
     height: 80px;             
-    background-color: lightgreen;
     padding: 10px;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
-    background-color: #48ff00;
     align-items:start;
     
 }
@@ -326,5 +324,6 @@ textarea{
     font-size: 18px;
     padding: 10px;
 }
+
 
 
