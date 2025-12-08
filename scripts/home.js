@@ -21,6 +21,7 @@ const db = getFirestore(app);
 
 let userId = '';
 const container = document.getElementById('list-recipe');
+container.style.padding = ' 20px 10px';
 const select = document.getElementById('select')
 
 
@@ -30,9 +31,12 @@ onAuthStateChanged(auth, (user) => {
         userId = uid;
         create_list_recipe(userId)
         document.getElementById('user').innerText = user.email;
+        
     } else {
     }
 });
+
+
 async function getData() {
     const recipesArray = [];
     const recipesCollectionRef = collection(db, "users", userId, "recipes");
@@ -59,18 +63,21 @@ function create_list_recipe() {
 function create_box_list_recipe(data) {
     for (let index = 0; index < data.length; index++) {
         const data_recipe = data[index];
-
         const div_list = document.createElement('div');
         div_list.id = data_recipe.id;
         div_list.classList.add('list_item')
 
-        const box_left = document.createElement('div')
+
+        const box_left = document.createElement('div');
         const p_title = document.createElement('p');
         p_title.innerText = data_recipe.title;
         p_title.classList.add('name-recipe')
+        p_title.style.margin = 0;
         const p_support = document.createElement('p');
         p_support.innerText = data_recipe.supportText;
         p_support.classList.add('support-recipe')
+        p_support.style.margin = 0;
+
 
         const box_right = document.createElement('div')
         box_right.classList.add('box-right')
@@ -80,8 +87,6 @@ function create_box_list_recipe(data) {
         const img2 = document.createElement('img');
         img2.src = '../assets/icons/free-icon-pencil-1046346.png';
         img2.classList.add('img_edit')
-        
-
 
         box_left.appendChild(p_title)
         box_left.appendChild(p_support);
@@ -93,13 +98,13 @@ function create_box_list_recipe(data) {
         div_list.addEventListener('click', (e) => {
             e.stopPropagation()
             click_list_item(p_title.innerText);
- 
+
         })
-        img2.addEventListener('click', (e)=>{
+        img2.addEventListener('click', (e) => {
             e.stopPropagation()
             click_edit(p_title.innerText)
         })
-        img1.addEventListener('click', (e)=>{
+        img1.addEventListener('click', (e) => {
             e.stopPropagation()
             click_img_delete(p_title.innerText)
         })
@@ -115,12 +120,12 @@ document.querySelector('select').addEventListener('change', (e) => {
         create_list_recipe()
         return;
     }
-    else{
-        data_from_category(selectedValue).then(data=>{
+    else {
+        data_from_category(selectedValue).then(data => {
             create_box_list_recipe(data)
         })
     }
-    
+
 
 })
 async function data_from_category(category) {
@@ -141,9 +146,11 @@ async function data_from_category(category) {
 // select category ------ Finish---------
 
 // click item list recipe -------- Start---------
+const dialog_text_recipe = document.getElementById('dialog-text-recipe')
 async function click_list_item(name_recipe) {
-    document.getElementById('dialog-recipe').style.display = 'flex';
-    container.innerHTML = '';
+    dialog_text_recipe.showModal()
+    // document.getElementById('dialog-recipe').style.display = 'flex';
+    // container.innerHTML = '';
 
     const recipesCollectionRef = collection(db, "users", userId, "recipes");
     const q = query(recipesCollectionRef, where("title", "==", name_recipe));
@@ -162,33 +169,51 @@ function getTextRecipe(text_recipe) {
 }
 let bool_btn_edit = true;
 document.getElementById('edit-recipe').addEventListener('click', (e) => {
-    let text_start_edit = document.getElementById('block-text-recipe').innerText;
+    let list_text = []
+    list_text.push(document.getElementById('block-text-recipe').innerText)
     if (bool_btn_edit) {
-        document.getElementById('block-text-recipe').style.display = 'none'
-        document.getElementById('text-recipe').value = text_start_edit;
-        document.getElementById('text-recipe').style.display = 'block';
+        document.getElementById('box-recipe-text').style.display = 'none'
+        document.getElementById('box-recipe-edit').value = document.getElementById('block-text-recipe').innerText;
+        document.getElementById('box-recipe-edit').style.display = 'block';
         bool_btn_edit = false;
     }
     else {
-        update_text_recipe(text_start_edit)
+
         bool_btn_edit = true;
-        document.getElementById('block-text-recipe').style.display = 'block'
-        document.getElementById('text-recipe').style.display = 'none';
+        document.getElementById('box-recipe-text').style.display = 'block'
+        document.getElementById('box-recipe-edit').style.display = 'none';
+        list_text.push(document.getElementById('box-recipe-edit').value)
+        // update_text_recipe1(list_text)
+        if (list_text[0].replace(/\s+/g, '') === list_text[1].replace(/\s+/g, '')) {
+            dialog_text_recipe.close();
+
+        }
+        else {
+            update_text_recipe(list_text)
+        }
     }
 
+
 })
+function update_text_recipe1(list_text) {
+    console.log('update')
+    // if (list_text[0].replace(/\s+/g, '') === list_text[1].replace(/\s+/g, '')) {
+    //     dialog_text_recipe.close();
+
+    // }
+    // else {
+    //     console.log('update')
+    // }
+}
 // close screen get text recipe
 document.getElementById('close-dialog-recipe').addEventListener('click', (e) => {
-    document.getElementById('dialog-recipe').style.display = 'none'
-    document.getElementById('text-recipe').style.display = 'none';
-    document.getElementById('block-text-recipe').style.display = 'block';
+    dialog_text_recipe.close()
     select.value = 'Wszystkie przepisy';
     create_list_recipe()
 })
 //update text recipe
-async function update_text_recipe(text_start_edit) {
-    let newText = document.getElementById('text-recipe').value;
-    document.getElementById('block-text-recipe').innerText = newText;
+async function update_text_recipe(text_edit) {
+    document.getElementById('block-text-recipe').innerText = text_edit[1];
     const name_recipe = document.getElementById('name-recipe').innerText;
 
     const recipesCollectionRef = collection(db, "users", userId, "recipes");
@@ -206,9 +231,9 @@ async function update_text_recipe(text_start_edit) {
 
 
     try {
-        // 2. Вызываем функцию updateDoc() для изменения данных
+
         await updateDoc(recipeDocRef, {
-            text: newText // Объект, указывающий, какие поля обновить
+            text: text_edit[1]
         });
 
 
@@ -219,33 +244,30 @@ async function update_text_recipe(text_start_edit) {
 
     } catch (error) {
         console.error("Ошибка при обновлении поля 'text':", error);
-        // Обработайте ошибку, например, покажите уведомление пользователю
     }
 
 
 }
 function sayHello(params) {
     document.getElementById('text-messenger').innerText = '';
-    document.getElementById('info').innerText = ''
+    document.getElementById('info').style.display = 'none'
 }
 
 // click item list recipe -------- Finish---------
 
 // delete recipe
+const dialog_delete = document.getElementById('delete-dialog');
 function click_img_delete(name_recipe) {
-    document.getElementById('dialog').style.display = 'flex';
     document.getElementById('recipe').innerText = name_recipe;
-
+    dialog_delete.showModal()
 }
 
 document.getElementById('btn-close').addEventListener('click', (e) => {
-    document.getElementById('dialog').style.display = 'none';
-
+    dialog_delete.close();
 });
 document.getElementById('btn-yes').addEventListener('click', (e) => {
-    document.getElementById('dialog').style.display = 'none';
+    dialog_delete.close();
     delete_recipe()
-    // тут видаляэмо рецепт
 })
 
 async function delete_recipe() {
@@ -261,38 +283,43 @@ async function delete_recipe() {
     const recipeId = recipeIds[0]
     const recipeDocRef = doc(db, "users", userId, "recipes", recipeId);
     try {
-        // 2. Вызываем функцию deleteDoc()
         await deleteDoc(recipeDocRef);
         setTimeout(() => {
             sayHello();
         }, 2000);
+        document.getElementById('info').style.display = 'block'
         document.getElementById('info').innerText = 'Przepis wykasowano!!!'
         const delete_object = document.getElementById(recipeId)
-        if (delete_object){
+        if (delete_object) {
             container.removeChild(delete_object)
+
         }
     } catch (error) {
         console.error("Ошибка при удалении рецепта:", error);
-        // Обработайте ошибку, например, покажите уведомление пользователю
         throw error;
     }
 
 }
 // click edit start
+
+const dialog_edit = document.getElementById('edit-support-dialog')
 function click_edit(name_recipe) {
     localStorage.setItem('name_recipe', name_recipe)
-    document.getElementById('dialod-edit-support').style.display = 'flex'
-    
+    dialog_edit.showModal()
 }
 document.getElementById('btn-edit-support').addEventListener('click', e => {
-    document.getElementById('dialod-edit-support').style.display = 'none'
-    update_text_support()
+    const newSupportText = document.getElementById('text-support').value;
+    if (newSupportText === '') {
+        dialog_edit.close();
+        return
+    }
+    update_text_support(newSupportText);
+    dialog_edit.close()
 })
 
-async function update_text_support(params) {
+async function update_text_support(newTextSupport) {
     const name_recipe = localStorage.getItem('name_recipe');
-    const newSupportText = document.getElementById('text-support').value;
-    
+
     const recipesCollectionRef = collection(db, "users", userId, "recipes");
     const q = query(recipesCollectionRef, where("title", "==", name_recipe));
 
@@ -305,18 +332,13 @@ async function update_text_support(params) {
 
     const recipeId = recipeIds[0]
     const recipeDocRef = doc(db, "users", userId, "recipes", recipeId);
-    
-    if (newSupportText === ''){
-        return
-    }
+
     try {
         // 2. Вызываем функцию updateDoc() для изменения данных
         await updateDoc(recipeDocRef, {
-            supportText: newSupportText // Объект, указывающий, какие поля обновить
+            supportText: newTextSupport
         });
-        document.getElementById(recipeId).children[0].children[1].innerText = newSupportText;
-        
-        
+        document.getElementById(recipeId).children[0].children[1].innerText = newTextSupport;
 
     } catch (error) {
         console.error("Ошибка при обновлении поля 'text':", error);
