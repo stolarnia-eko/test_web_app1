@@ -30,7 +30,7 @@ onAuthStateChanged(auth, (user) => {
         const uid = user.uid;
         userId = uid;
         create_list_recipe(userId)
-        document.getElementById('user').innerText = user.email;
+        document.getElementById('user').innerText = user.displayName;
         
     } else {
     }
@@ -53,6 +53,17 @@ async function getData() {
     });
     return recipesArray;
 }
+// click dot vertical
+const div_dot = document.getElementById('div-dot')
+document.getElementById('dot-vertical').addEventListener('click', e => {
+    
+    if (div_dot.classList.contains('show')){
+        div_dot.classList.remove('show')
+    }
+    else{
+        div_dot.classList.add('show')
+    }
+})
 
 function create_list_recipe() {
     getData().then(data => {
@@ -346,11 +357,3 @@ async function update_text_support(newTextSupport) {
     }
     document.getElementById('text-support').value = ''
 }
-
-// add recipe
-document.getElementById('click_add-recipe').addEventListener('click', (e) => {
-    select.value = 'Wszystkie przepisy'
-    window.location.href = '/test_web_app1/scripts/add_recipe.html'
-    console.log('click add recipe')
-})
-
