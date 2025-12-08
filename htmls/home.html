@@ -6,92 +6,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="../style/home.css">
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"> -->
 </head>
 
 <body>
     <div class="wrapper">
-        <header class="top-header">
-            <div class="box1">
+        <div class="top-content">
+            <header class="top-header">
+
                 <h2 class="title">Ksiazka przepisow</h2>
                 <img id="dot-vertical" src="../assets/icons/icons8-menu-vertical-50.png" alt="">
-                <div id="signout" class="open-dialog-signout">Sing Out</div>
+                <!-- <div id="signout" class="open-dialog-signout">Sing Out</div> -->
+            </header>
+            <div class="user">
+                <p>Witaj,</p>
+                <p id="user"></p>
             </div>
-        </header>
-        <div class="user">
-            <p>Witaj,</p>
-            <p id="user"></p>
-        </div>
-        <div class="categores">
             <h3>Moje przepisy:</h3>
-            <select id="select" name="fruit">
-                <option value="Wszystkie przepisy">Wszystkie przepisy</option>
-                <option value="Pierwsze dania">Pierwsze dania</option>
-                <option value="Drugie dania">Drugie dania</option>
-                <option value="Ryby">Ryby</option>
-                <option value="Przystawki">Przystawki</option>
-                <option value="Salatki">Salatki</option>
-                <option value="Ciasta">Ciasta</option>
-                <option value="Desery">Desery</option>
-                <option value="Drozrzdiowe">Drozrzdiowe</option>
-                <option value="Inne">Inne</option>
-            </select>
+            <div class="categores">
+                <select id="select" name="fruit">
+                    <option value="Wszystkie przepisy">Wszystkie przepisy</option>
+                    <option value="Pierwsze dania">Pierwsze dania</option>
+                    <option value="Drugie dania">Drugie dania</option>
+                    <option value="Ryby">Ryby</option>
+                    <option value="Przystawki">Przystawki</option>
+                    <option value="Salatki">Salatki</option>
+                    <option value="Ciasta">Ciasta</option>
+                    <option value="Desery">Desery</option>
+                    <option value="Drozrzdiowe">Drozrzdiowe</option>
+                    <option value="Inne">Inne</option>
+                </select>
+                <h4 id="info"></h4>
+            </div>
         </div>
-        <div class="info-user">
-            <p id="info"></p>
+
+        <div class="middle-content">
+            <div class="list-recipe" id="list-recipe">
+            </div>
         </div>
-        <div class="list-recipe" id="list-recipe">
-        </div>
-        <div class="add-recipe">
+
+
+
+        <div class="bottom-content">
             <h3>Dodawanie przepisu</h3>
             <button id="click_add-recipe" class="button-85">Dodaj</button>
         </div>
 
-        <div class="dialog" id="dialog">
-            <div class="dialog-box">
-                <div class="content-dialog">
-                    <p class="title-dialog-delete">Napewno wykasowac przepis???</p>
-                    <h4 id="recipe"></h4>
-                    <div class="two-btn-delete">
-                        <button class="button-86" id="btn-close">
-                            Powrot
-                        </button>
-                        <button class="button-86" id="btn-yes">
-                            Akceptuje
-                        </button>
-                    </div>
-                </div>
+        <dialog class="delete-dialog" id="delete-dialog">
+            <p class="title-dialog-delete">Napewno wykasowac przepis???</p>
+            <h4 id="recipe" class="recipe_name"></h4>
+            <div class="dialog-actions">
+                <button class="button-85" id="btn-close">Odzuc</button>
+                <button class="button-85" id="btn-yes">Akceptuj</button>
             </div>
-        </div>
-        <div class="dialog-recipe" id="dialog-recipe">
-            <div class="dialog-box-recipe">
-                <p class="title-recip" id="name-recipe"></p>
-                <textarea name="" class="text-recipe" id="text-recipe"></textarea>
-                <p class="block-text-recipe" id="block-text-recipe"></p>
-                <div class="messenger">
-                    <p id="text-messenger"></p>
-                </div>
-                <div class="two-button">
-                    <button id="edit-recipe" class="button-85">
-                        Edytuj
-                    </button>
-                    <button id="close-dialog-recipe" class="button-85">
-                        Zamknij
-                    </button>
-                </div>
+        </dialog>
+        <dialog id="edit-support-dialog">
+            <h2 class="title-support">Zapisz nowy support text</h2>
+            <input type="text" id="text-support">
+            <button class="button-85" id="btn-edit-support">Zapisz albo zamknij</button>
+        </dialog>
+        <dialog id="dialog-text-recipe">
+        
+            <h3 id="name-recipe"></h3>
+            <div class="box-recipe-text" id="box-recipe-text">
+                <p id="block-text-recipe"></p>
             </div>
-        </div>
-        <div class="dialod-edit-support" id="dialod-edit-support">
-            <div class="block-edit">
-                <h2 class="title-support">Zapisz nowy support text</h2>
-                <input type="text" id="text-support">
-                <button class="button-85" id="btn-edit-support">Zapisz</button>
-            </div>
-        </div>
+            <textarea name="" id="box-recipe-edit"></textarea> 
+            <p id="text-messenger"></p>
+            <div class="box-buttons">
+                <button class="button-85" id="edit-recipe">Edytuj</button>
+                <button class="button-85" id="close-dialog-recipe">Zamknij</button>
+            </div>   
+        </dialog>
     </div>
-    </div>
-
-
 </body>
 <script type="module" src="../scripts/home.js"></script>
 
