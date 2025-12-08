@@ -1,87 +1,70 @@
+:root {
+    --main-color: #5c67f2;
+    --text-color: #333;
+    --background-color: #dcdcf5;
+    --card-bg: #fff;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
 * {
-    margin: 0;
+    /* margin: 0; */
     padding: 0;
     box-sizing: border-box; 
 }
 
-body{
-    background: #c2e2ed;
+body {
+    font-family: 'Arial', sans-serif;
     overflow: hidden;
-    height: 100vh;
+    margin: 0;
 }
-.wrapper{
-    width: 100vw;
+
+.wrapper {
+    /* max-width: 580px; */
     margin: 0 auto;
-    background-color: antiquewhite;
-    position: relative;
-    height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+    display: flex;             /* Активируем Flexbox */
+    flex-direction: column;    /* Располагаем элементы вертикально */
+    height: 100dvh;
+    /* height: 100vh;                     Занимаем всю высоту  */
 }
-/* start header */
-.wrapper header{
-    font-size: 18px;
-    font-family: "Poppins", sans-serif;
+/* 1 block */
+.top-content{
+    background-color: var(--background-color);
     
 }
-.box1 {
+header {
     display: flex;
     justify-content: space-between;
-    padding: 18px 10px;
+    align-items: center;
+    padding: 0 10px;
     position: relative;
-    margin-bottom: 20px;
-    background-color: rgb(112, 243, 79);
+    background-color: rgb(112, 243, 79); 
     
 }
+
 #dot-vertical{
     width: 30px;
-    
+    height: 30px;
 }
-.open-dialog-signout {
-    display: none;
-    /* Скрыто по умолчанию */
-    position: absolute;
-    right: 10px;
-    top: 40px;
-    background-color: #f9f9ff;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    padding: 10px;
-    border-radius: 4px;
-} 
-.show {
-    display: block;
-    width: 200px;
-    padding: 20px;
-    background-color: red;
-    color: white;
-    font-size:28px;
-    font-weight: bold;
-}
-/* finish header */
-/* user start */
 .user{
     display: flex;
     gap: 10px;
     font-size: 14px;
     justify-content: right;
     padding-right: 20px;
+    height: 30px;
+    align-items: center;
+    
 }
-/* user finish */
-/* start select categores */
+h3{
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-size: 28px;
+}
 .categores {
     padding: 7px;
 }
-
-.categores h3 {
-    margin-bottom: 18px;
-    padding: 7px;
-    font-size: 28px;
-}
-
 select {
-    font-size: 32px;
+    font-size: 22px;
     padding: 5px 10px;
     border-radius: 12px;
     border: 2px solid #555;
@@ -90,58 +73,66 @@ select {
     width: 100%;
     appearance: none;
 }
-/* finish select categores */
-.info-user{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2em;
-    padding-top: 10px;
+/* block 2 middle scroll */
+.middle-content{
+    flex-grow: 1;
+    scroll-behavior: smooth; 
+    overflow-y: auto; 
+
 }
-/* start block list recipe */
-.list-recipe {
-    padding-left: 5px;
-    padding-right: 5px;
-    overflow-y: auto;
-    margin-top: 20px;
-    height: auto;
-   
+.list-recipe{
+    flex-grow: 1;              /* САМОЕ ВАЖНОЕ СВОЙСТВО: заставляет блок растянуться и занять все оставшееся доступное пространство */
+    background-color: lightyellow;
+    
 }
 
 
-.list-recipe::-webkit-scrollbar {
+.middle-content::-webkit-scrollbar {
     display: none;
     /* Скрывает сам элемент скроллбара */
 }
+#info{
+    display: none;
+    text-align: center;
+    color: red;
+    font-size: 22px;
+    padding: 10px;
+    background-color: #111;
+}
 
 .name-recipe {
-    font-size: 20px;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
 .support-recipe {
-    font-size: 16px;
-    color: rgba(0, 0, 0, 0.7);
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.5);
+    padding: 0;
+    
+}
+.box-right{
+    display: flex;
 }
 
 .list_item {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 10px;
-    background-color: #f0f0f0;
+    background-color: #a1d2ec;
     padding: 10px;
     border:3px rgb(78, 48, 227) solid;
     border-radius: 15px;
+    
 }
 
 .list_item:hover {
     background-color: #999494;
     color: white;
 }
-.box-right{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 
 .img_delete {
     width: 32px;
@@ -153,77 +144,20 @@ select {
     width: 30px;
     height: 30px;
 }
-/* finish block list recipe */
-/* dialog delete start */
-.title-dialog-delete{
-    font-size: 22px;
-    color: #111;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-.two-btn-delete{
-    margin-top: 40px;
-    display: flex;
-    justify-content: right;
-    gap: 15px;
-}
-.button-86{
-    padding: 0.4em 1.5em;
-    border: none;
-    outline: none;
-    color: rgb(255, 255, 255);
-    background: #111;
-    cursor: pointer;
-    position: relative;
-    z-index: 0;
-    border-radius: 10px;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    font-size: 16px;
-}
-/* dialod-edit-support start */
-.dialod-edit-support{
-    background-color: rgba(108, 126, 146, 1);
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top:0;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-}
-.block-edit{
-    width: 380px;
-    border: 4px rgb(162, 255, 0) solid;
-    border-radius: 16px;
-    padding: 30px;
-    text-align: center;
-}
-.title-support{
-    font-size: 1.5em;
-    margin-bottom: 14px;
-}
-input{
-    font-size: 28px;
-    width: 100%;
+
+/* 3 block bottom */
+.bottom-content{
+    height: 80px;             
+    background-color: lightgreen;
     padding: 10px;
-    margin-bottom: 30px ;
-}
-/* dialod-edit-support finish */
-/* start block add recipe */
-.add-recipe{
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
-    padding: 20px;
     background-color: #48ff00;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    align-items:start;
+    
 }
-.add-recipe h3{
+.bottom-content h3{
     font-size: 22px;
     
 }
@@ -241,7 +175,7 @@ input{
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  font-size: 24px;
+  font-size: 18px;
 }
 
 .button-85:before, .button-86:before {
@@ -298,156 +232,98 @@ input{
 .button-85:active{
     font-size:16px ;
 }
-/* .no-show{
-    display: none;
-} */
-/* finish add recipe */
 
+/* style dialogs windows */
+        /* 1 dialog delete */
+/* dialog delete start */
 
-
-
-
-
-/* start box dialog */
-
-.dialog{
-    background-color: rgba(0, 0, 0, 0.8);
-    position: absolute;
-    width: 100%;
-    height: 110%;
-    top:0;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    
-    
-}
-.dialog-box{
-    width: 90%;
-    background-color: #fff;
-    border-radius: 16px;
-
-}
-.content-dialog{
+/* Стилизация тега <dialog> */
+dialog {
     padding: 20px;
-    text-align: center;
-    height: auto;
-    /* position: relative; */
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    max-width: 95%;
+    background-color: #b5b9f0;
+}
+dialog::-webkit-scrollbar{
+    display: none;
+}
+
+/* Затемненный фон, который появляется, когда окно открыто */
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.dialog-actions {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.content-dialog{
+    width: 100vw;
+    height: 90vh;
+    display: flex;
     
+
 }
-.content-dialog h2{
-    font-size: 2em; 
-    top:20px;
-    left: 20px;
-    margin-bottom: 30px;
+.title-dialog-delete{
+    font-size: 24px;
+    color: #111;
+    font-weight: bold;
+    margin-bottom: 10px;
+    
+} 
+.recipe_name{
+    background-color: rgba(11, 11, 11, 0.49);
+    padding: 10px;
+    color:white;
 }
-.two-btn{
-    margin-top: 100px;
+.dialog-actions{
+    margin-top: 40px;
     display: flex;
     justify-content: right;
-    padding-right: 15px;
-    gap: 20px;
-    
-}
-.btn1 {
-  /* Variables */
-  --button_radius: 0.75em;
-  --button_color: #e8e8e8;
-  --button_outline_color: #000000;
-  font-size: 17px;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  border-radius: var(--button_radius);
-  background: var(--button_outline_color);
-  margin-right: 30px;
-}
+    gap: 25px;
+} 
+/*     dialog edit support */
 
-.button_top {
-  display: block;
-  box-sizing: border-box;
-  border: 2px solid var(--button_outline_color);
-  border-radius: var(--button_radius);
-  padding: 0.55em 1.2em;
-  background: var(--button_color);
-  color: var(--button_outline_color);
-  transform: translateY(-0.2em);
-  transition: transform 0.1s ease;
-}
-
-button:hover .button_top {
-  /* Pull the button upwards when hovered */
-  transform: translateY(-0.33em);
-}
-
-button:active .button_top {
-  /* Push the button downwards when pressed */
-  transform: translateY(0);
-}
-#recipe{
-    background-color: red;
-    font-size: 30px;
-    color: white;
-    padding: 0px 20px 5px 2px;
-    
-}
-/* dialog my recipe */
-.dialog-recipe{
-    background-color: rgb(231, 226, 226);
-    position: fixed;
-    top: 0;
+input{
+    font-size: 24px;
     width: 100%;
-    height: 100vh;
-    z-index: 50;
+    padding: 10px;
+    margin-bottom: 30px ;
+} 
+/* dialog get update text recipe */
+.dialog-text-recipe{
+    background-color: #00ffd5;
+    width: 90%;
+    height: 90%;  
+}
+.box-recipe-text{
+    width: 80vw;
+    height: 50vh;
+    border: 3px black solid;
+    padding: 10px;
+    overflow-y: auto;
+}
+textarea{
     display: none;
-    justify-content: center;
-    padding-top: 28px;
-    overflow: hidden;
-
-
+    width: 80vw;
+    height: 50vh;
+    font-size: 22px;
+    padding: 10px;
+    font-family: Arial, sans-serif;
 }
-.dialog-box-recipe{
-    width: 95%;
-    height: 85%;
-    display: block;
-    position: relative;
-
-}
-.title-recip{
-    color: #e00d0d;
-    font-size: 1.5em;
-    font-weight: bold;
-}
-/* textarea in my recipe */
-.text-recipe{
-    display:none;
-    width: 100%;
-    height: 80%;
-    font-size: 24px;
-    padding: 20px;
-    font-family: "Poppins", sans-serif;
-    overflow-y: auto;
-}
-.block-text-recipe{
-    display:block;
-    width: 100%;
-    height: 80%;
-    font-size: 24px;
-    padding: 20px;
-    font-family: "Poppins", sans-serif;
-    overflow-y: auto;
-    border: 2px black solid;
-}
-.messenger{
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    font-size: 1.5em;  
-}
-
-.two-button{
-    width: 100%;
+.box-buttons{
     display: flex;
     justify-content: space-around;
+    margin-top: 20px;
+}
+#text-messenger{
+    text-align: center;
+    background-color: #8d898995;
+    color: black;
+    font-size: 18px;
+    padding: 10px;
 }
 
