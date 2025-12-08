@@ -350,6 +350,7 @@ async function update_text_support(newTextSupport) {
 // add recipe
 document.getElementById('click_add-recipe').addEventListener('click', (e) => {
     select.value = 'Wszystkie przepisy'
-    window.location.href = './add_recipe.html'
+    window.location.href = '/test_web_app1/scripts/add_recipe.html'
     console.log('click add recipe')
 })
+
