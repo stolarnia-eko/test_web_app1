@@ -22,8 +22,8 @@ body {
     margin: 0 auto;
     display: flex;             /* Активируем Flexbox */
     flex-direction: column;    /* Располагаем элементы вертикально */
-    
-    height: 100vh;                     Занимаем всю высоту 
+    height: 100dvh;
+    background-color: lightyellow;                    
 }
 /* 1 block */
 .top-content{
@@ -43,6 +43,26 @@ header {
 #dot-vertical{
     width: 30px;
     height: 30px;
+    
+}
+
+.div-dot{
+    position: absolute;
+    width: 300px;
+    background-color: #d4f835;
+    top: 37px;
+    right: 27px;
+    z-index: 1;
+    padding: 25px 40px;
+    display: none;
+}
+.show{
+    display: block;
+}
+
+li{
+    font-size: 22px;
+    padding-bottom: 20px;
 }
 .user{
     display: flex;
@@ -82,7 +102,7 @@ select {
 }
 .list-recipe{
     flex-grow: 1;              /* САМОЕ ВАЖНОЕ СВОЙСТВО: заставляет блок растянуться и занять все оставшееся доступное пространство */
-    background-color: lightyellow;
+    
     
 }
 
@@ -145,20 +165,7 @@ select {
     height: 30px;
 }
 
-/* 3 block bottom */
-.bottom-content{
-    height: 80px;             
-    padding: 10px;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
-    align-items:start;
-    
-}
-.bottom-content h3{
-    font-size: 22px;
-    
-}
+
 /* CSS */
 .button-85 {
   padding: 0.4em 1.5em;
@@ -324,6 +331,4 @@ textarea{
     font-size: 18px;
     padding: 10px;
 }
-
-
 
