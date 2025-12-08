@@ -15,12 +15,29 @@
 
                 <h2 class="title">Ksiazka przepisow</h2>
                 <img id="dot-vertical" src="../assets/icons/icons8-menu-vertical-50.png" alt="">
-                <!-- <div id="signout" class="open-dialog-signout">Sing Out</div> -->
+                <div id="div-dot" class="div-dot">
+                    <ul>
+                        <li>
+                            <a href="add_recipe.html">Dodaj przepis</a>
+                        </li>
+                        <li>
+                            <a href="#">My Profile</a>
+                        </li>
+                        <li>
+                            <a href="signout.html">Sign</a>
+                        </li>
+                        <li>
+                            <a href="#">Admin</a>
+                        </li>
+                        
+                        <li>
+                            <a href="#">About</a>
+                        </li> 
+                    </ul>
+                    
+                </div>
             </header>
-            <div class="bottom-content">
-                <h3>Dodawanie przepisu</h3>
-                <button id="click_add-recipe" class="button-85">Dodaj</button>
-            </div>
+            
             <div class="user">
                 <p>Witaj,</p>
                 <p id="user"></p>
@@ -50,7 +67,7 @@
 
 
 
-        
+
 
         <dialog class="delete-dialog" id="delete-dialog">
             <p class="title-dialog-delete">Napewno wykasowac przepis???</p>
@@ -66,21 +83,20 @@
             <button class="button-85" id="btn-edit-support">Zapisz albo zamknij</button>
         </dialog>
         <dialog id="dialog-text-recipe">
-        
+
             <h3 id="name-recipe"></h3>
             <div class="box-recipe-text" id="box-recipe-text">
                 <p id="block-text-recipe"></p>
             </div>
-            <textarea name="" id="box-recipe-edit"></textarea> 
+            <textarea name="" id="box-recipe-edit"></textarea>
             <p id="text-messenger"></p>
             <div class="box-buttons">
                 <button class="button-85" id="edit-recipe">Edytuj</button>
                 <button class="button-85" id="close-dialog-recipe">Zamknij</button>
-            </div>   
+            </div>
         </dialog>
     </div>
 </body>
 <script type="module" src="../scripts/home.js"></script>
 
 </html>
-
