@@ -22,8 +22,8 @@ body {
     margin: 0 auto;
     display: flex;             /* Активируем Flexbox */
     flex-direction: column;    /* Располагаем элементы вертикально */
-    height: 100dvh;
-    /* height: 100vh;                     Занимаем всю высоту  */
+    
+    height: 100vh;                     Занимаем всю высоту 
 }
 /* 1 block */
 .top-content{
@@ -326,4 +326,5 @@ textarea{
     font-size: 18px;
     padding: 10px;
 }
+
 
