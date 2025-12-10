@@ -33,21 +33,25 @@
             <form action="#" id="form_signin" method="post">
                 <input type="text" id="email_logo" placeholder="Email address" required />
                 <input type="password" id="password_logo" placeholder="Password" required />
-                <a href="#">Forgot password?</a>
+                
+                <div class="checkbox">
+                    <input type="checkbox" name="" id="check1">
+                    <p>Показати password</p>
+                </div>
                 <input type="submit" value="Login" id="btn-sign"/>
             </form>
+            <p id="a">Forgot password?</p>
         </div>
     </section>
-    <div class="dialog" id="dialog">
-        <div class="dialog-box">
-            <span id="close-dialog" class="close-btn">&times;</span>
-            <div class="content-dialog">
-                <h2 style="text-align: center;">Uwaga:</h2>
-                <p id="text-dialog"></p>
-            </div>
-        </div>
-    </div>
-    <!-- <img src="https://icons.iconarchive.com/icons/ampeross/qetto/128/icon-developer-icon.png" width="128" height="128"> -->
+    <dialog id="dialog">
+        <h2>Uwaga!!!</h2>
+        <p id="info"></p>
+        <p id="info-pl"></p>
+        
+    </dialog>
+    <dialog id="dialog-info">
+        <h2 id="messenger"></h2>
+    </dialog>
 </body>
 <script type="module" src="scripts/firebaseauth.js"></script>
 <script>
@@ -64,5 +68,6 @@
 
 
 </html>
+
 
 
