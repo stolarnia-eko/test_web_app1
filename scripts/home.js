@@ -64,6 +64,15 @@ document.getElementById('dot-vertical').addEventListener('click', e => {
         div_dot.classList.add('show')
     }
 })
+const all_list = document.querySelector('ul').children;
+
+for (let index = 0; index < all_list.length; index++) {
+    const element = all_list[index];
+    element.addEventListener('click', e=>{
+       div_dot.classList.remove('show') 
+    })
+    
+}
 
 function create_list_recipe() {
     getData().then(data => {
@@ -357,3 +366,4 @@ async function update_text_support(newTextSupport) {
     }
     document.getElementById('text-support').value = ''
 }
+
