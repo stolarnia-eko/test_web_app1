@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, updateProfile, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
 // import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js"
 
 
@@ -23,8 +23,34 @@ const form_signup = document.getElementById('form_signup');
 const form_sign = document.getElementById('form_signin');
 const check = document.getElementById('check');
 const dialog = document.getElementById('dialog');
-let text_dialog = document.getElementById('text-dialog');
-const close_dialog = document.getElementById('close-dialog');
+let text_dialog = document.getElementById('info');
+const info_pl = document.getElementById('info-pl');
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        // const uid = user.uid;
+        window.location.href = 'htmls/home.html'
+        console.log(auth.currentUser)
+    }
+});
+
+
+document.getElementById('a').addEventListener('click', e => {
+    window.location.href = '/htmls/forgot.html'
+})
+
+function openDialogInfo(params,pl) {
+    text_dialog.innerText = params;
+    info_pl.innerText = pl;
+    dialog.showModal()
+    setTimeout(() => {
+        sayHello();
+    }, 3000);
+}
+
+function sayHello(params) {
+    dialog.close()
+}
+
 
 
 window.addEventListener('load', (e) => {
@@ -46,6 +72,15 @@ check.addEventListener('click', (e) => {
         document.getElementById('password').type = 'password';
     }
 })
+check1.addEventListener('click', (e) => {
+    let value_check = check1.checked;
+    if (value_check) {
+        document.getElementById('password_logo').type = 'text';
+    }
+    else {
+        document.getElementById('password_logo').type = 'password';
+    }
+})
 
 
 
@@ -57,27 +92,26 @@ form_signup.onsubmit = async (e) => {
     const password = form_signup.password.value;
 
     if (!checkPass(password)) {
-        open_dialog('Haslo powinno miec przynajmi 1 mala, wieka litere, cyfre i znak specialny i minimum 6 znakow!');
+        openDialogInfo(password, 'Haslo powinno miec przynajmi 1 mala, wieka litere, cyfre i minimum 6 znakow!');
     } else {
-        sinupUser(email, password, name);
+        signupUser(email, password, name);
     }
 };
 
 
-function sinupUser(email, password, displayName) {
+function signupUser(email, password, displayName) {
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed up 
             const user = userCredential.user;
-            // ...
-            console.log(user)
-            // updateProfile(user, {
-            //     displayName: displayName
-            // });
-            open_dialog(`Uzytkownika ${email} zarejestrowano`)
+
+            updateProfile(user, {
+                displayName: displayName
+            });
+            openDialogInfo(`Uzytkownika ${email} zarejestrowano`)
         })
         .catch((error) => {
-            open_dialog(`Uzytkownik o email ${email} juz jest`)
+            openDialogInfo(error, `Uzytkownik  ${email} juz jest. Zaloguj sie`)
         });
 }
 
@@ -108,7 +142,8 @@ function singInUser(email, password) {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            alert(errorMessage)
+            const text_info = 'Zly password albo niema takiego uzytkownika!!!'
+            openDialogInfo(errorMessage, text_info)
         });
 }
 
@@ -121,13 +156,7 @@ function checkPass(input) {
     return false;
 }
 
-function open_dialog(text) {
-    dialog.style.display = 'flex'
-    text_dialog.innerText = text;
-}
-close_dialog.addEventListener('click', (e) => {
-    dialog.style.display = 'none';
-})
+
 
 
 
